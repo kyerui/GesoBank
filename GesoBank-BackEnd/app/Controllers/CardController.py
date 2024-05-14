@@ -1,5 +1,4 @@
 from flask import jsonify, make_response
-import datetime
 from ..Services.CardServices import CardServices
 
 class CardController:
@@ -29,7 +28,7 @@ class CardController:
             data = CardServices.get_one_card(userHash, cardNumber, db)
             return make_response(jsonify({'cardName' : data.cardName, 'number' : data.number, 'cvc' : data.cvc, 'validity' : data.validity, 'name' : data.name}), 200)
         except:
-            return make_response(400)
+            return make_response(jsonify("Error"), 400)
     
     @staticmethod
     def delete_card(data, db):

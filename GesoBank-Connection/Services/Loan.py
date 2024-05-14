@@ -24,8 +24,8 @@ def loan():
         response = requests.post(url, json=dados)
 
         if response.status_code == 200:
-            print("Loan completed successfully")
+            print("\nLoan completed successfully")
         else:
-            print('Error completing loan')
+            print('\nError completing loan')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')

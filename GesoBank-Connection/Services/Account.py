@@ -15,7 +15,6 @@ def register_user():
     url = 'http://localhost:5000/user/register'  # Substitua localhost:5000 pela URL correta do seu back-end
     dados = {"userHash": userHash, "passwordHash": passwordHash, "name": name, "cpf": cpf, "phone": phone}
     response = requests.post(url, json=dados)
-    print(response)
     if response.status_code == 200:
         print("\nSuccessfully Register")  # Exibindo a resposta do back-end
     else:

@@ -19,9 +19,9 @@ def get_user_balance():
             json = response.json()
             print(f"\nBalance = {json['balance']}")
         else:
-            print('Error catching user balance')
+            print('\nError catching user balance')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')
 
 def get_user_data():
 
@@ -44,6 +44,6 @@ def get_user_data():
             print(f"CPF = {json['cpf']}")
             print(f"Phone = {json['phone']}")
         else:
-            print('Error catching user data')
+            print('\nError catching user data')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')

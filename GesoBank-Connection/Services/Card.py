@@ -36,11 +36,11 @@ def register_card():
         response = requests.post(url, json=dados)
 
         if response.status_code == 200:
-            print('Card registered successfully')
+            print('\nCard registered successfully')
         else:
-            print('Error registering card')
+            print('\nError registering card')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')
 
 def get_card():
     public_key = rsa.PublicKey.load_pkcs1(Enviroment.get_env("PK").encode())
@@ -69,9 +69,9 @@ def get_card():
             print(f"Validity = {json['validity']}")
             print(f"Name = {json['name']}")
         else:
-            print('Error when getting card')
+            print('\nError when getting card')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')
 
 def delete_card():
     public_key = rsa.PublicKey.load_pkcs1(Enviroment.get_env("PK").encode())
@@ -94,8 +94,8 @@ def delete_card():
         response = requests.post(url, json=dados)
 
         if response.status_code == 200:
-            print('Card deleted successfully')
+            print('\nCard deleted successfully')
         else:
-            print('Error when deleting card')
+            print('\nError when deleting card')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')

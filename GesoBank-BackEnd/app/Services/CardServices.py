@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exists
 from ..Models.Card import Card
@@ -12,14 +12,12 @@ class CardServices:
     def register_card(cardName:str, number:str, cvc:str, year:str, month:str, name:str, userHash:str, db: SQLAlchemy):
         if(db.session.query(exists().where(User.userHash == userHash))).scalar():
             userData = db.session.query(User).filter_by(userHash=userHash).first()
-
             year = rsa_decrypt_message(load_pem(decrypt_message(userData.privatekey)), bytes.fromhex(year))
             month = rsa_decrypt_message(load_pem(decrypt_message(userData.privatekey)), bytes.fromhex(month))
             validity = str(datetime.date(int(year), int(month), 1))
-
             number = rsa_decrypt_message(load_pem(decrypt_message(userData.privatekey)), bytes.fromhex(number))
             cvc = rsa_decrypt_message(load_pem(decrypt_message(userData.privatekey)), bytes.fromhex(cvc))
-                
+            
             encrypt_number = encrypt_message(number)
             encrypt_cvc = encrypt_message(cvc)
             encrypt_validity = encrypt_message(validity)
@@ -39,6 +37,7 @@ class CardServices:
             cardNumber = encrypt_message(cardNumber)
             
             if db.session.query(exists().where(Card.number == cardNumber)).scalar():
+                from datetime import datetime
                 p1 = db.session.query(Card).filter_by(number=cardNumber, userHash=userHash).first()
                 p1.number = decrypt_message(p1.number)
                 p1.cvc = decrypt_message(p1.cvc)

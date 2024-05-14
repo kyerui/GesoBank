@@ -61,7 +61,6 @@ def registrar_rotas(app:Flask, db: SQLAlchemy):
     @app.route('/card/register', methods=['POST'])
     def register_card():
         data = request.get_json() 
-        print(data)
         return CardController.register_card(data, db)
     
     @app.route('/card/get', methods=['POST'])

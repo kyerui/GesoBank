@@ -11,7 +11,7 @@ class LoanServices:
         if db.session.query(exists().where(User.userHash == userHash, User.passwordHash == passwordHash)).scalar():
 
             user_ = db.session.query(User).filter_by(userHash=userHash).first()
-            value = float(rsa_decrypt_message(load_pem(decrypt_message(user_.privatekey)), bytes.fromhex(value)))
+            value = abs(float(rsa_decrypt_message(load_pem(decrypt_message(user_.privatekey)), bytes.fromhex(value))))
 
             user_.balance = decrypt_message(user_.balance)
                 

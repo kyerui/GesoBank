@@ -20,9 +20,10 @@ class TransferenceServices:
             if db.session.query(exists().where(User.name == receiverName, User.cpf == receiverCpf, User.phone == receiverPhone)):
                 p1.balance = decrypt_message(p1.balance)
 
-                value = float(rsa_decrypt_message(load_pem(decrypt_message(p1.privatekey)), bytes.fromhex(value)))
+                value = abs(float(rsa_decrypt_message(load_pem(decrypt_message(p1.privatekey)), bytes.fromhex(value))))
+                
 
-                p2 = db.session.query(User).filter_by(cpf=receiverCpf).first()
+                p2 = db.session.query(User).filter_by(cpf=receiverCpf, phone=receiverPhone, name=receiverName).first()
                 p2.balance = decrypt_message(p2.balance)
 
                 if(float(p1.balance) >= value):

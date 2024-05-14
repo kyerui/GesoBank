@@ -33,8 +33,8 @@ def transference():
         response = requests.post(url, json=dados)
 
         if response.status_code == 200:
-            print("Transfer completed successfully")
+            print("\nTransfer completed successfully")
         else:
-            print('Error completing transfer')
+            print('\nError completing transfer')
     else:
-        print('User not logged in')
+        print('\nUser not logged in')
