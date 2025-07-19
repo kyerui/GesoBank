@@ -66,6 +66,6 @@ The project is separated into two large parts: `BackEnd` and `Connection`
 
 ### Members:
 - [Thiago Bittencourt](https://github.com/oThiagoBittencourt)
-- [Gael Huk Kukla](https://github.com/kyeruii)
+- [Gael Huk Kukla](https://github.com/kyerui)
 - [Yann Lucas](https://github.com/Y4nnLS)
 - [Gabriel Delfes](https://github.com/Gabrielmd3)
